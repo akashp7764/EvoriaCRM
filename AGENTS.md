@@ -75,3 +75,13 @@ The agent should execute these primary commands for running the application:
 1. Read-Only Scope: Do NOT modify database schemas, `package.json`, or `.env` configurations without explicit human confirmation.
 2. Smart Comments: Do not over-comment obvious code. Only explain complex business logic, regex, or specific workarounds. 
 3. State Management: Keep state local whenever possible. Only elevate to global state (Context API) when shared across disjointed components.
+
+## Agent Guide
+
+Before writing any code, read the following files in order:
+
+1. ARCHITECTURE.md — project folder structure, Frontend Tech Stack, Component Architecture, State Management strategy (Context & TanStack Query), Routing logic, API Consumption rules, and UI/UX Performance Optimization.
+2. SKILLS.md — React best practices, Custom Hook boundaries, UI Component structure, Tailwind CSS styling guidelines, and Frontend Code Quality standards.
+3. AGENTS.md — Frontend coding standards, React/JSX naming conventions, Vite build and run commands, and UI form/API response validation rules that apply to every task.
+
+Follow all rules defined across these files for every feature you build.

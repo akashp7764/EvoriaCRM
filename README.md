@@ -1,50 +1,53 @@
-# React + TypeScript + Vite
+# Evoria - Event Ticketing Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Evoria is a modern, scalable event management platform built with React 18, TypeScript, and Shadcn/UI. It features a robust component library and mobile-friendly interfaces for both attendees and organizers.
 
-Currently, two official plugins are available:
+## 🚀 Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **Clone the repository**
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+3. **Configure Environment**
+   Create a `.env` file with:
+   ```
+   VITE_API_BASE_URL=http://localhost:3000
+   ```
+4. **Run Development Server**
+   ```bash
+   npm run dev
+   ```
 
-## Expanding the ESLint configuration
+## 🛠️ Technology Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+| Layer | Technology |
+|---|---|
+| **Framework** | React 18 (via Vite) |
+| **Language** | TypeScript (ES6+) |
+| **Styling** | Tailwind CSS v4 + Shadcn/UI |
+| **Routing** | React Router DOM v6 |
+| **State Management** | Context API (Client) + TanStack Query (Server) |
+| **Validation** | Zod + React Hook Form |
+| **Icons** | Lucide React |
 
-- Configure the top-level `parserOptions` property like this:
+## 📁 Project Structure
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- `src/components/ui/` — Base Shadcn components (Tier 1).
+- `src/components/controls/` — Reusable smart wrappers with Zod/logic (Tier 2).
+- `src/components/common/` — Shared UI compositions like Navbars/Layouts (Tier 3).
+- `src/components/pages/` — Main route views/screen components.
+- `src/hooks/` — Custom reactivity and data-fetching logic.
+- `src/helpers/` — Business logic and data transformation utilities.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 📏 Coding Standards
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- **Clean UI**: Strictly use Tailwind utility classes.
+- **Validation**: All forms must use Zod schemas.
+- **Naming**: Kebab-case for files, PascalCase for components, camelCase for logic.
+- **State**: Keep state local; elevate only when necessary using Context API.
+- **Error Handling**: Standardized Axios interceptors and boundary catches.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+---
+
+Built for excellence with the Google Deepmind Advanced Agentic Coding team.

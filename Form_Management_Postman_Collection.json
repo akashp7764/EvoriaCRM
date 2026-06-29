@@ -1,0 +1,218 @@
+{
+	"info": {
+		"_postman_id": "c7a8b9e0-1d2c-3b4a-5f6e-7a8b9c0d1e2f",
+		"name": "Form Management Module",
+		"description": "Production-ready Postman collection for verifying the Form Management System endpoints including access control, version tracking, and soft-delete features.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create or Update Form - Registration (Admin/Manager Only)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"eventId\": 1,\n    \"type\": \"REGISTRATION\",\n    \"schema\": {\n        \"title\": \"Spring Gala Registration Form\",\n        \"description\": \"Sign up for the annual gala\",\n        \"fields\": [\n            {\n                \"name\": \"fullName\",\n                \"label\": \"Full Name\",\n                \"type\": \"text\",\n                \"required\": true\n            },\n            {\n                \"name\": \"dietaryRestrictions\",\n                \"label\": \"Dietary Restrictions\",\n                \"type\": \"select\",\n                \"options\": [\"None\", \"Vegetarian\", \"Vegan\", \"Gluten-Free\"],\n                \"required\": false\n            }\n        ]\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/forms",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"forms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create or Update Form - Feedback (Admin/Manager Only)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"eventId\": 1,\n    \"type\": \"FEEDBACK\",\n    \"schema\": {\n        \"title\": \"Spring Gala Feedback Form\",\n        \"description\": \"Tell us your experience\",\n        \"fields\": [\n            {\n                \"name\": \"rating\",\n                \"label\": \"Overall Rating (1-5)\",\n                \"type\": \"number\",\n                \"required\": true\n            },\n            {\n                \"name\": \"comments\",\n                \"label\": \"Additional Comments\",\n                \"type\": \"textarea\",\n                \"required\": false\n            }\n        ]\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/forms",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"forms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Active Forms (Public)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/forms?page=1&limit=10&type=registration",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"forms"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						},
+						{
+							"key": "type",
+							"value": "registration"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Form Details by Path ID (Public)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/forms/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"forms",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Form Details by Query ID fallback (Public)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/forms?id=1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"forms"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Soft Delete Form (Admin/Manager Only)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/forms/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"forms",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "authToken",
+			"value": "your_jwt_admin_or_manager_token_here",
+			"type": "string"
+		}
+	]
+}

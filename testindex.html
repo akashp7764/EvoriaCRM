@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="x-apple-disable-message-reformatting">
+    <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+    <title>Ticket Details</title>
+    <style>
+        table, td, div, h1, p {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100% !important;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            background-color: #F8FAFC;
+        }
+        /* Mobile-first Media Queries */
+        @media screen and (max-width: 600px) {
+            .fluid-container {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            .ticket-column {
+                width: 100% !important;
+                display: block !important;
+            }
+            .qr-container {
+                border-left: none !important;
+                border-top: 2px dashed #E2E8F0 !important;
+                padding-top: 24px !important;
+                text-align: center !important;
+            }
+            .mobile-padding {
+                padding: 16px !important;
+            }
+        }
+    </style>
+</head>
+<body style="margin:0; padding:0; background-color:#F8FAFC;">
+    <div role="article" aria-roledescription="email" aria-label="Ticket Details" lang="en" style="background-color:#F8FAFC;">
+        
+        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#F8FAFC;">
+            <tr>
+                <td align="center" style="padding: 40px 16px;">
+                    
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" class="fluid-container" style="max-width:600px; margin:0 auto;">
+                        
+                        <tr>
+                            <td align="center" style="padding: 0 0 32px 0;">
+                                <h1 style="margin: 0; font-size: 26px; font-weight: 700; color: #0F172A; letter-spacing: -0.5px;">Ticket Details</h1>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td align="center">
+                                
+                                <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:#FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); overflow:hidden; margin-bottom: 20px;">
+                                    <tr>
+                                        <td style="padding: 0;">
+                                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                <tr>
+                                                    <td class="ticket-column mobile-padding" valign="top" width="70%" style="padding: 32px;">
+                                                        <h2 style="margin: 0 0 8px 0; font-size: 20px; font-weight: 700; color: #0F172A; line-height: 1.3;">${eventName}</h2>
+                                                        <p style="margin: 0 0 24px 0; font-size: 14px; color: #475569; line-height: 1.6;">${summary}</p>
+                                                        
+                                                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                            <tr>
+                                                                <td valign="top" style="padding: 0 0 12px 0;">
+                                                                    <p style="margin: 0; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #64748B;">Ticket ID</p>
+                                                                    <p style="margin: 4px 0 0 0; font-size: 15px; font-weight: 700; color: #0F172A;">${ticketId}</p>
+                                                                </td>
+                                                                <td valign="top" style="padding: 0 0 12px 0;">
+                                                                    <p style="margin: 0; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #64748B;">Location</p>
+                                                                    <p style="margin: 4px 0 0 0; font-size: 14px; font-weight: 600; color: #0F172A;">${place}</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td valign="top" style="padding: 0 0 12px 0;">
+                                                                    <p style="margin: 0; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #64748B;">Date & Time</p>
+                                                                    <p style="margin: 4px 0 0 0; font-size: 14px; font-weight: 600; color: #0F172A;">${createdDate}</p>
+                                                                </td>
+                                                                <td valign="top" style="padding: 0 0 12px 0;">
+                                                                    <p style="margin: 0; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #64748B;">Assignee</p>
+                                                                    <p style="margin: 4px 0 0 0; font-size: 14px; font-weight: 600; color: #0F172A;">${assignee || 'Unassigned'}</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" valign="top" style="padding: 8px 0 0 0;">
+                                                                    <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                                                                        <tr>
+                                                                            <td style="padding: 0 8px 0 0;">
+                                                                                <span style="display: inline-block; padding: 4px 10px; background-color: #F1F5F9; border: 1px solid #E2E8F0; border-radius: 16px; font-size: 12px; font-weight: 600; color: #334155;">
+                                                                                    Status: ${status}
+                                                                                </span>
+                                                                            </td>
+                                                                            <td>
+                                                                                <span style="display: inline-block; padding: 4px 10px; background-color: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 16px; font-size: 12px; font-weight: 600; color: #166534;">
+                                                                                    Priority: ${priority}
+                                                                                </span>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    
+                                                    <td class="ticket-column qr-container mobile-padding" valign="middle" width="30%" align="center" style="padding: 32px; border-left: 2px dashed #E2E8F0; background-color: #FAFAFA;">
+                                                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                            <tr>
+                                                                <td align="center">
+                                                                    <img src="${qrCodeUrl}" alt="Ticket QR Code" width="120" height="120" style="display: block; width: 100%; max-width: 120px; height: auto; border: 0; outline: none; text-decoration: none;" />
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="center" style="padding-top: 12px;">
+                                                                    <p style="margin: 0; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #64748B;">Scan for Entry</p>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                                
+                                </td>
+                        </tr>
+
+                        <tr>
+                            <td align="center" style="padding: 32px 0 0 0;">
+                                <p style="margin: 0; font-size: 12px; color: #94A3B8; line-height: 1.5;">
+                                    This is an automated email. Please do not reply.
+                                </p>
+                            </td>
+                        </tr>
+                        
+                    </table>
+                    
+                    </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

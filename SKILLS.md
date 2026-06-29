@@ -5,6 +5,17 @@
 - **Tier 2 (Controls):** All custom reusable components requested in `SETUP.md` must be built inside `src/components/controls/`. These components MUST import the base UI components from `@/components/ui/` and wrap them with the required business logic (e.g., React Hook Form integrations, Zod error message displays, custom variant props).
 
 
+###  React Component Standards (Strict Ref Policy & asChild)
+
+Shadcn, Radix UI primitives, and React Hook Form rely heavily on DOM references. To prevent "Function components cannot be given refs" and "SlotClone" errors, you MUST follow these rules when building Tier 2 custom wrappers in src/components/controls/:
+
+1. **Mandatory forwardRef:** You are strictly forbidden from writing standard functional components for UI controls. ALL wrapper components (especially Buttons, Inputs, and Dropdowns) MUST be wrapped in React.forwardRef.
+2. **Pass it Down:** You must explicitly pass the ref to the primary underlying Shadcn component (e.g., <Button ref={ref} {...props} />).
+3. **The asChild Rule:** If a component is ever going to be used inside a Shadcn Trigger (like DialogTrigger asChild or PopoverTrigger asChild), it absolutely must be capable of receiving a forwarded ref.
+4. **Display Name:** Always append ComponentName.displayName = "ComponentName" at the bottom of the file.
+
+
+
 ### Logging & Debugging
 
 - Remove console.log statements before merging to production.
