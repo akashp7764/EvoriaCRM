@@ -1,0 +1,569 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-4a5b-6c7d-8e9f0a1b2c3d",
+		"name": "Evoria V2 - Comprehensive API Collection",
+		"description": "Full collection for Evoria V2 Event Management System APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Ping",
+			"item": [
+				{
+					"name": "Ping",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/ping",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "ping"]
+						}
+					}
+				},
+				{
+					"name": "DB Ping",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/db-ping",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "db-ping"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@evoria.com\",\n    \"password\": \"admin123\"\n}",
+							"options": { "raw": { "language": "json" } }
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/login",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "login"]
+						}
+					}
+				},
+				{
+					"name": "Forgot Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user@example.com\"\n}",
+							"options": { "raw": { "language": "json" } }
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/forgot-password",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "forgot-password"]
+						}
+					}
+				},
+				{
+					"name": "Verify OTP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user@example.com\",\n    \"otp\": \"123456\"\n}",
+							"options": { "raw": { "language": "json" } }
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/verify-otp",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "verify-otp"]
+						}
+					}
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"resetToken\": \"your_reset_token_here\",\n    \"newPassword\": \"new_password_123\"\n}",
+							"options": { "raw": { "language": "json" } }
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/reset-password",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "reset-password"]
+						}
+					}
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/logout",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "logout"]
+						}
+					}
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"oldPassword\": \"admin123\",\n    \"newPassword\": \"admin456\"\n}",
+							"options": { "raw": { "language": "json" } }
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/change-password",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "change-password"]
+						}
+					}
+				},
+				{
+					"name": "Register Manager (Admin Only)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Manager Name\",\n    \"email\": \"manager@evoria.com\",\n    \"password\": \"manager123\"\n}",
+							"options": { "raw": { "language": "json" } }
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/register-manager",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "register-manager"]
+						}
+					}
+				},
+				{
+					"name": "Delete User (Admin Only)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"targetUserId\": 2\n}",
+							"options": { "raw": { "language": "json" } }
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/delete-user",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "delete-user"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Events",
+			"item": [
+				{
+					"name": "Create Event",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"eventTypeId\": 1,\n    \"title\": \"Tech Summit 2026\",\n    \"location\": \"Convention Hall B\",\n    \"startDate\": \"2026-07-01T09:00:00Z\",\n    \"endDate\": \"2026-07-01T18:00:00Z\",\n    \"maxguestCapacity\": 200,\n    \"eventManagerId\": 2,\n    \"autoApprove\": true\n}",
+							"options": { "raw": { "language": "json" } }
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/events",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "events"]
+						}
+					}
+				},
+				{
+					"name": "List Events",
+					"request": {
+						"method": "GET",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/events?page=1&limit=10&status=active&sort=createdAt:desc",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "events"],
+							"query": [
+								{ "key": "page", "value": "1" },
+								{ "key": "limit", "value": "10" },
+								{ "key": "status", "value": "active" },
+								{ "key": "sort", "value": "createdAt:desc" }
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Event Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/events/:id",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "events", ":id"],
+							"variable": [{ "key": "id", "value": "1" }]
+						}
+					}
+				},
+				{
+					"name": "Update Event",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Updated Tech Summit Title\",\n    \"maxguestCapacity\": 250\n}",
+							"options": { "raw": { "language": "json" } }
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/events/:id",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "events", ":id"],
+							"variable": [{ "key": "id", "value": "1" }]
+						}
+					}
+				},
+				{
+					"name": "Delete Event",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/events/:id",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "events", ":id"],
+							"variable": [{ "key": "id", "value": "1" }]
+						}
+					}
+				},
+				{
+					"name": "List Event Types",
+					"request": {
+						"method": "GET",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/events/types",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "events", "types"]
+						}
+					}
+				},
+				{
+					"name": "Create/Update Event Type (Admin Only)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Conference\",\n    \"discription\": \"Professional meeting for discussion and formal exchange of information\"\n}",
+							"options": { "raw": { "language": "json" } }
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/events/types",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "events", "types"]
+						}
+					}
+				},
+				{
+					"name": "Get Remaining Capacity",
+					"request": {
+						"method": "GET",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/events/:id/capacity",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "events", ":id", "capacity"],
+							"variable": [{ "key": "id", "value": "1" }]
+						}
+					}
+				},
+				{
+					"name": "Get Registration QR",
+					"request": {
+						"method": "GET",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/events/:id/registration-qr",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "events", ":id", "registration-qr"],
+							"variable": [{ "key": "id", "value": "1" }]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Registrations",
+			"item": [
+				{
+					"name": "Register for Event (Public)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"attendee@example.com\",\n    \"phoneNumber\": \"1234567890\",\n    \"otp\": \"123456\",\n    \"formData\": {\n        \"name\": \"John Doe\",\n        \"company\": \"Tech Corp\"\n    }\n}",
+							"options": { "raw": { "language": "json" } }
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/events/:eventId/registrations",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "events", ":eventId", "registrations"],
+							"variable": [{ "key": "eventId", "value": "1" }]
+						}
+					}
+				},
+				{
+					"name": "List Registrations for Event (Admin/Manager)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/events/:eventId/registrations?page=1&limit=10&status=PENDING",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "events", ":eventId", "registrations"],
+							"query": [
+								{ "key": "page", "value": "1" },
+								{ "key": "limit", "value": "10" },
+								{ "key": "status", "value": "PENDING" }
+							],
+							"variable": [{ "key": "eventId", "value": "1" }]
+						}
+					}
+				},
+				{
+					"name": "Get Registration Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/registrations/:id",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "registrations", ":id"],
+							"variable": [{ "key": "id", "value": "1" }]
+						}
+					}
+				},
+				{
+					"name": "Update Registration Status (Approve/Reject)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"APPROVED\"\n}",
+							"options": { "raw": { "language": "json" } }
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/registrations/:id/status",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "registrations", ":id", "status"],
+							"variable": [{ "key": "id", "value": "1" }]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Attendance",
+			"item": [
+				{
+					"name": "Scan QR (Mark Attendance)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"registrationId\": 1,\n    \"memberId\": 1,\n    \"signature\": \"valid_hmac_signature_here\"\n}",
+							"options": { "raw": { "language": "json" } }
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/attendance/scan",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "attendance", "scan"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Feedback",
+			"item": [
+				{
+					"name": "Submit Feedback (Attended Only)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"formId\": 1,\n    \"answers\": {\n        \"rating\": 5,\n        \"comment\": \"Great event!\"\n    }\n}",
+							"options": { "raw": { "language": "json" } }
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/registrations/:registrationId/feedback",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "registrations", ":registrationId", "feedback"],
+							"variable": [{ "key": "registrationId", "value": "1" }]
+						}
+					}
+				},
+				{
+					"name": "List Feedback for Event",
+					"request": {
+						"method": "GET",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/events/:eventId/feedback?page=1&limit=10",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "events", ":eventId", "feedback"],
+							"query": [
+								{ "key": "page", "value": "1" },
+								{ "key": "limit", "value": "10" }
+							],
+							"variable": [{ "key": "eventId", "value": "1" }]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Reports",
+			"item": [
+				{
+					"name": "Get Event Summary",
+					"request": {
+						"method": "GET",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/reports/:eventId/summary",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "reports", ":eventId", "summary"],
+							"variable": [{ "key": "eventId", "value": "1" }]
+						}
+					}
+				},
+				{
+					"name": "Get Attendance Report",
+					"request": {
+						"method": "GET",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/reports/:eventId/attendance?page=1&limit=10",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "reports", ":eventId", "attendance"],
+							"query": [
+								{ "key": "page", "value": "1" },
+								{ "key": "limit", "value": "10" }
+							],
+							"variable": [{ "key": "eventId", "value": "1" }]
+						}
+					}
+				},
+				{
+					"name": "Export Report (Excel)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/reports/:eventId/export?type=attendance",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "reports", ":eventId", "export"],
+							"query": [
+								{ "key": "type", "value": "attendance" }
+							],
+							"variable": [{ "key": "eventId", "value": "1" }]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Uploads",
+			"item": [
+				{
+					"name": "Get Pre-signed Upload URL",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fileName\": \"venue_photo.jpg\",\n    \"contentType\": \"image/jpeg\"\n}",
+							"options": { "raw": { "language": "json" } }
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/v1/uploads/presigned-url",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "v1", "uploads", "presigned-url"]
+						}
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{ "key": "baseUrl", "value": "http://localhost:3000" },
+		{ "key": "token", "value": "your_jwt_token_here" }
+	]
+}

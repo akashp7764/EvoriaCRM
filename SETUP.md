@@ -27,7 +27,7 @@ This project is a scalable frontend system for managing event registrations, app
 
 ## Colors
 
-- **Primary:** #B8860B
+- **Primary:** #FFBF00
 - **Secondary:** #000000
 **Ternary:** #0A2463
 
